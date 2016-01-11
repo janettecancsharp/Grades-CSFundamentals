@@ -8,11 +8,38 @@ namespace Grades
 {
     public class GradeBook
     {
-        public string Name;
+        //public NameChangedDelegate NameChanged;
+        public event NameChangedDelegate NameChanged;
+
         private List<float> grades;
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    if (_name != value)
+                    {
+                        NameChangedEventArgs args = new NameChangedEventArgs();
+                        args.ExistingName = _name;
+                        args.NewName = value;
+
+                        NameChanged(this, args);
+                    }
+                    _name = value;
+                }
+            }
+        }
 
         public GradeBook()
         {
+            _name = "Empty";
             grades = new List<float>();
         }
 
