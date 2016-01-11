@@ -61,14 +61,14 @@ namespace Grades.Tests.Types
         [TestMethod]
         public void ReferenceTypesPassByValue()
         {
-            GradeBook book1 = new GradeBook();
-            GradeBook book2 = book1;
+            GradeTracker book1 = new GradeTracker();
+            GradeTracker book2 = book1;
 
             GiveBookAName(book2);
             Assert.AreEqual("a gradebook", book1.Name);
         }
 
-        private void GiveBookAName(GradeBook book)
+        private void GiveBookAName(GradeTracker book)
         {
             book.Name = "a gradebook";
         }
@@ -96,8 +96,8 @@ namespace Grades.Tests.Types
         [TestMethod]
         public void GradeBookVariablesHoldAReference()
         {
-            GradeBook g1 = new GradeBook();
-            GradeBook g2 = g1;
+            GradeTracker g1 = new GradeTracker();
+            GradeTracker g2 = g1;
 
             //g1 = new GradeBook();
             g1.Name = "Scott's grade book";
